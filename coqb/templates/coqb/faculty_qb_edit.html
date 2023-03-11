@@ -1,0 +1,105 @@
+{% extends 'coqb/layout.html' %}
+{% load static %}
+
+{% block title %}Edit Question{% endblock title %}
+{% block body %}
+<div class="head-title">
+	<div class="left">
+		<h1>Edit Question</h1>
+		<ul class="dashboard">
+			<li>
+				<a class="active" href="{% url 'qb' %}">Question Bank</a>
+			</li>
+			<li><i class='bx bx-chevron-right'></i></li>
+			<li>
+				<a class="active" href="{% url 'add-qb' %}">Edit Question</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<link rel="stylesheet" href="{% static 'coqb/style_form.css' %}">
+<div class="table-data">
+	<div class="order">
+		<div class="wrapper">
+			<div class="head">
+				<h3>Edit Question</h3>
+			</div>
+			<div class="is-submitted" style="display: none;">
+				<div style="color: #285c01;">Submitted successfully.</div> <a href="{% url 'qb' %}">Go back to question bank list.</a>
+			 </div>
+			<form action="{% url 'edit-qb' %}" method="post">
+				{% csrf_token %}
+				<div class="form">
+					<div class="inputfield">
+
+						<label>Course</label>
+						<div class="custom_select">
+							<select required name="qb_id">
+                                <option value="{{qb_info.0}}">{{qb_info.1}} Section {{qb_info.3}}: {{qb_info.2}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form">
+						<div class="inputfield">
+
+							<label>Semester</label>
+							<div class="custom_select">
+								<select required name="semester">
+									<option value="{{semester}}">{% if semester == 'Sp' %}Spring{% elif semester == 'Su' %}Summer{% else %}Autumn{% endif %}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form">
+							<div class="inputfield">
+								<label>Year</label>
+								<div class="custom_select">
+									<select required name="year">
+										<option value="{{year}}">{{year}}</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form">
+								<div class="inputfield">
+									<label>Question</label>
+									<textarea required name="question" type="text" class="input">{{qb_info.4}}</textarea>
+								</div>
+								<div class="inputfield">
+								</div>
+
+
+							</div>
+							<div class="inputfield">
+								<label>Marks</label>
+								<input required name="marks" value="{{qb_info.5}}" type="text" class="input">
+							</div>
+							<div style="margin-top: 20px;"></div>
+							<div class="inputfield">
+								<input type="submit" value="Add" class="btn">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+
+
+{% block script %}
+	<script src="{% static 'coqb/faculty_co.js' %}"></script>
+	<script>
+		const isSubmitted = {{ is_submitted }}
+		
+		if (isSubmitted) {
+		   const form = document.querySelector('div.form')
+		   form.style = 'display: none;'
+		   const submitted = document.querySelector('div.is-submitted')
+		   submitted.style = "display: block;"
+		}
+	 </script>
+{% endblock script %}

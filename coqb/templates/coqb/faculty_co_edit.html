@@ -1,0 +1,202 @@
+{% extends 'coqb/layout.html' %}
+{% load static %}
+
+{% block title %}Edit Course Outline{% endblock title %}
+{% block body %}
+<div class="head-title">
+   <div class="left">
+      <h1>Edit Course Outline</h1>
+      <ul class="dashboard">
+         <li>
+            <a class="active" href="{% url 'co' %}">Course Outline</a>
+         </li>
+         <li><i class='bx bx-chevron-right'></i></li>
+         <li>
+            <a class="active" href="{% url 'add-co' %}">Edit Course Outline</a>
+         </li>
+      </ul>
+   </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'coqb/style_form.css' %}">
+<div class="table-data">
+   <div class="order">
+      <div class="wrapper">
+         <div class="head">
+            <h3>Edit Course Outline Data</h3>
+         </div>
+         <div class="is-submitted" style="display: none;">
+            <div style="color: #285c01;">Submitted successfully.</div> <a href="{% url 'co' %}">Go back to course outline list.</a>
+         </div>
+         {% comment %} <div class="title">
+            Upload Course Outline Data
+         </div> {% endcomment %}
+         <div class="form">
+            <form action="{% url 'add-co' %}" method="post">
+               {% csrf_token %}
+               <div class="inputfield">
+
+                  <label>Course</label>
+                  <div class="custom_select">
+                     <select required name="section">
+                           <option value="{{co_info.0}}">{{co_info.1}} Section {{co_info.3}}: {{co_info.2}}</option>
+                     </select>
+                  </div>
+               </div>
+
+
+
+               <div class="form">
+                  <div class="inputfield">
+                     <label>Semester</label>
+                     <div class="custom_select">
+                        <select required name="semester">
+                           <option value="{{co_info.4}}">{% if co_info.4 == 'Sp' %}Spring{% elif co_info.4 == 'Su' %}Summer{% else %}Autumn{% endif %}</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <div class="form">
+                     <div class="inputfield">
+                        <label>Year</label>
+                        <div class="custom_select">
+                           <select required name="year">
+                              <option value="{{co_info.5}}">{{co_info.5}}</option>
+                           </select>
+                        </div>
+                     </div>
+
+                     <div class="form">
+                        <div class="inputfield">
+
+                           <label>Course Type</label>
+                           <div class="custom_select">
+                              <select required name="course_type">
+                                 <option value="U" {% if co_info.6 == 'U' %}selected{% endif %}>Undergraduate</option>
+                                 <option value="G" {% if co_info.6 == 'G' %}selected{% endif %}>Graduate</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="form">
+                           <div class="inputfield">
+                              <label>Course Description</label>
+                              <input name="course_description" value="{{co_info.7}}" type="text" class="input">
+                           </div>
+                           <div class="inputfield">
+                           </div>
+
+                           <div class="form">
+                              <div class="inputfield">
+                                 <label>Course Objective</label>
+                                 <input name="course_objective" value="{{co_info.8}}" type="text" class="input">
+                              </div>
+                              <div class="inputfield">
+                              </div>
+
+                              <div class="form">
+                                 <div class="inputfield">
+                                    <label>Course Policy</label>
+                                    <input name="course_policy" value="{{co_info.9}}" type="text" class="input">
+                                 </div>
+                                 <div class="inputfield">
+                                 </div>
+
+
+                                 <div class="form">
+                                    <div class="inputfield">
+                                       <label>Academic Dishonesty</label>
+                                       <input name="dishonesty" value="{{co_info.10}}" type="text" class="input">
+                                    </div>
+                                    <div class="inputfield">
+                                    </div>
+
+
+                                    <div class="form">
+                                       <div class="inputfield">
+                                          <label>Non-Discrimination</label>
+                                          <input name="discrimination" value="{{co_info.11}}" type="text" class="input">
+                                       </div>
+                                       <div class="inputfield">
+                                       </div>
+
+                                       <div class="form">
+                                          <div class="inputfield">
+                                             <label>Student With Disability And Stress</label>
+                                             <input name="disability" value="{{co_info.12}}" type="text" class="input">
+                                          </div>
+                                          <div class="inputfield">
+                                          </div>
+
+                                          <div class="form">
+                                             <div class="inputfield">
+                                                <label>Course Requirement</label>
+                                                <input name="requirement" value="{{co_info.13}}" type="text" class="input">
+                                             </div>
+                                             <div class="inputfield">
+                                             </div>
+
+                                             <div class="form">
+                                                <div class="inputfield">
+                                                   <label>Course Content</label>
+                                                   <input name="course_content" value="{{co_info.14}}" type="text" class="input">
+                                                </div>
+                                                <div class="inputfield">
+                                                </div>
+
+                                                <div class="form">
+                                                   <div class="inputfield">
+                                                      <label>Assessment and Evaluation</label>
+                                                      <input name="assessment" value="{{co_info.15}}" type="text" class="input">
+                                                   </div>
+                                                   <div class="inputfield">
+                                                   </div>
+
+                                                   <div class="form">
+                                                      <div class="inputfield">
+                                                         <label>Reference</label>
+                                                         <input name="reference" value="{{co_info.16}}" type="text" class="input">
+                                                      </div>
+                                                      <div class="inputfield">
+                                                      </div>
+                                                      <div class="inputfield">
+                                                         <input type="submit" value="Add" class="btn">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock body %}
+
+
+
+
+{% block script %}
+   <script src="{% static 'coqb/faculty_co.js' %}"></script>
+   
+   <script>
+      const isSubmitted = {{ is_submitted }}
+      
+      if (isSubmitted) {
+         const form = document.querySelector('div.form')
+         form.style = 'display: none;'
+         const submitted = document.querySelector('div.is-submitted')
+         submitted.style = "display: block;"
+      }
+   </script>   
+{% endblock script %}
+

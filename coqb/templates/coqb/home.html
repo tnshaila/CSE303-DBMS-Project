@@ -1,0 +1,62 @@
+{% extends 'coqb/home_layout.html' %}
+{% load static %}
+
+{% block title %}COQB SYSTEM{% endblock title %}
+
+{% block body %}
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Course Outline <span></span></h1>
+        <h1>And Question Bank <span></span></h1>
+        <h1>System <span></span></h1>
+        <a href="{% url 'signin' %}" type="button" class="cta">Sign In</a>
+      </div>
+    </div>
+    <div id="DigitalCLOCK" class="clock" onload="showTime()"></div>
+  </section>
+  <!-- End Hero Section  -->
+
+  
+
+  
+  {% comment %} <!-- Team Info -->
+  <section id="teaminfo">
+    <div class="teaminfo container">
+      <div>
+        <h1 class="section-title">Team  <span>Info </span></h1>
+      </div>
+      <div class="teaminfo-items">
+        <div class="teaminfo-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="teaminfo-info">
+            <h1>Phone</h1>
+            <h2>+1 234 123 1234</h2>
+            <h2>+1 234 123 1234</h2>
+          </div>
+        </div>
+        <div class="teaminfo-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="teaminfo-info">
+            <h1>Email</h1>
+            <h2>info@gmail.com</h2>
+            <h2>abcd@gmail.com</h2>
+          </div>
+        </div>
+        <div class="teaminfo-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="teaminfo-info">
+            <h1>Address</h1>
+            <h2>Fatikchhari, Chittagong, Bangladesh</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section --> {% endcomment %}
+
+
+{% endblock body %}
+
+

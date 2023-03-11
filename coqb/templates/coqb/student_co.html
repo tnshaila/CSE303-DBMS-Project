@@ -1,0 +1,163 @@
+{% extends 'coqb/layout.html' %}
+{% load static %}
+
+{% block title %}Download Course Outline{% endblock title %}
+{% block body %}
+<div class="head-title">
+	<div class="left">
+		<h1>Download Course Outline</h1>
+		<ul class="dashboard">
+			<li>
+				<a href="{% url 'co' %}">Course Outline</a>
+			</li>
+			<li><i class='bx bx-chevron-right'></i></li>
+			<li>
+				<a class="active" href="{% url 'co' %}">Download</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<link rel="stylesheet" href="{% static 'coqb/style_form.css' %}">
+<div class="table-data">
+	<div class="order">
+		<div class="wrapper">
+			<div class="head">
+				<h3>Select Course Outline</h3>
+			</div>
+			{% comment %} <div class="title">
+				Upload Course Outline Data
+			</div> {% endcomment %}
+			<form action="{% url 'co-pdf' %}" method="post">
+				{% csrf_token %}
+				<div class="form">
+					<div class="inputfield">
+
+						<label>Course</label>
+						<div class="custom_select">
+							<select name="section" required>
+								<option value="" disabled selected hidden>Select</option>
+								{% for co in co_info %}
+									<option value="{{co.0}}">{{co.1}} Section {{co.3}}: {{co.2}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+
+
+					<div class="form">
+						<div class="inputfield">
+							<label>Semester</label>
+							<div class="custom_select">
+								<select name="semester">
+									<option value="" disabled selected hidden>Select</option>
+									<option value="Spring">Spring</option>
+									<option value="Summer">Summer</option>
+									<option value="Autumn" selected>Autumn</option>
+								</select>
+							</div>
+						</div>
+						<div class="form">
+							<div class="inputfield">
+								<label>Semester</label>
+								<div class="custom_select">
+									<select name="year">
+										{% for item in year %}
+											<option value="{{item}}">{{item}}</option>
+										{% endfor %}
+										<option value="{{latest_year}}" selected>{{latest_year}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="inputfield">
+						</div>
+						<div class="form">
+							<div class="inputfield">
+								<input type="submit" value="Download Course Outline" class="btn">
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+
+
+{% block script %}<script src="{% static 'coqb/faculty_co.js' %}"></script>{% endblock script %}
+
+{% comment %} {% extends 'coqb/layout.html' %}
+{% load static %}
+
+{% block title %}Course Outline{% endblock title %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'coqb/style_form.css' %}">
+<div class="wrapper">
+	<div class="title">
+		Course Outline
+	</div>
+	<div class="form">
+		<div class="inputfield">
+
+			<label>Course</label>
+			<div class="custom_select">
+				<select>
+					<option value="">Select</option>
+					<option value="CSC303">CSC303</option>
+					<option value="CSC303L">CSC303L</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form">
+			<div class="inputfield">
+
+				<label>Section</label>
+				<div class="custom_select">
+					<select>
+						<option value="">Select</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">8</option>
+						<option value="10">8</option>
+						<option value="11">8</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form">
+				<div class="inputfield">
+					<label>Semester</label>
+					<div class="custom_select">
+						<select>
+							<option value="">Select</option>
+							<option value="Spring">Spring</option>
+							<option value="Summer">Summer</option>
+							<option value="Autumn">Autumn</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="inputfield">
+					<input type="submit" value="Download Course Outline" class="btn">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+{% block script %}<script src="{% static 'coqb/faculty_co.js' %}"></script>{% endblock script %} {% endcomment %}

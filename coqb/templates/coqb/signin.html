@@ -1,0 +1,61 @@
+{% extends 'coqb/home_layout.html' %}
+{% load static %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'coqb/style_s.css' %}">
+    <link rel="stylesheet" href="css/all.css">
+    <title>Sign in to COQB SYSTEM</title>
+</head>
+<body> {% endcomment %}
+<!--The video -->
+   {% comment %} <video autoplay muted loop id="myVideo"> {% endcomment %}
+    {% comment %} <source src="{% static 'coqb/Bgvideo.mp4' %}" type="video/mp4"> {% endcomment %}
+     {% comment %} </video> {% endcomment %}
+
+{% block title %}Sign In{% endblock title %}
+	 
+{% block body %}
+<section id="hero" style="width: 100vw;">
+	<div class="hero container" style="width: 100vw; display:grid; align-items: center;">
+			<link rel="stylesheet" href="{% static 'coqb/style_s.css' %}">
+			
+	<div class="form-box body">
+		<div class="form">
+                 
+			{% comment %} <h2>COQB SYSTEM</h2><br> <br> {% endcomment %}
+                       
+
+
+			<form action="{% url 'signin' %}" method="post">
+				{% csrf_token %}
+				<div class="input-box">
+					<input type="text" name="user_id" required="requied">
+					<span>User ID</span>
+					<i></i>
+				</div>
+				<div class="input-box">
+					<input type="Password" name="password" required="requied">
+					<span>Password</span>
+					<i></i>
+				</div>
+				<div class="links">
+					<a href="#">Forgot Password</a>
+					
+				</div>
+				<button class="cta">Sign In</button>
+				{% if failed %}<div style="font-size: 12px; margin-top: 10px; text-align: center;">Sorry, that didn't work. Try again!</div>{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+</section>
+	
+{% endblock body %}
+
+{% comment %} 
+</body>
+</html> {% endcomment %}

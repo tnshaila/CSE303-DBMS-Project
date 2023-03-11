@@ -1,0 +1,44 @@
+{% extends "coqb/layout.html" %}
+{% load static %}
+{% block title %}Question Bank{% endblock %}
+{% block body %}
+
+	<div class="head-title">
+		<div class="left">
+			<h1>Question Bank</h1>
+			<ul class="dashboard">
+				<li>
+					<a href="{% url 'qb' %}">Question Bank</a>
+				</li>
+				<li><i class='bx bx-chevron-right'></i></li>
+				<li>
+					<a class="active" href="">Question List</a>
+				</li>
+			</ul>
+		</div>
+		<a href="{% url 'add-qb' %}" class="btn-download">
+			{% comment %} <i class='bx bxs-cloud-download'></i> {% endcomment %}
+			<span class="text">Add New Item</span>
+		</a>
+	</div>
+
+
+	<div class="table-data">
+		<div class="order">
+			<div class="head">
+				<h3>Question List</h3>
+			</div>
+			<table>
+				<tbody>
+					{% for qb in qb_info %}
+							<tr onclick="window.location='edit-qb/{{qb.0}}';" style="cursor: pointer;">
+								<td>Question {{qb.1}}</td>
+							</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}<script src="{% static 'coqb/faculty.js' %}"></script>{% endblock %}

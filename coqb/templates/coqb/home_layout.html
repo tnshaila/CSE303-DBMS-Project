@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'coqb/style.css' %}">
+  <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+
+ <The video -->
+   <video autoplay muted loop id="myVideo">
+    <source src="{% static 'coqb/Bgvideo.mp4' %}" type="video/mp4">
+     </video>
+
+
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="{% url 'home' %}">
+            <h1><span>C</span>OQB <span>SYSTEM</span></h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="{% url 'home' %}" data-after="Home">Home</a></li>
+
+            <li><a href="#teaminfo" data-after="Team Info">Credits</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+    {% block body %}{% endblock body %}
+
+    <script src="{% static 'coqb/app.js' %}"></script>
+</body>
+
+</html>
